@@ -1,0 +1,76 @@
+<!-- index.wxml — Mug Companion Scene -->
+<view class="scene">
+
+  <!-- Layer 1: Background -->
+  <image class="layer bg" src="/Images/Background.png" mode="scaleToFill" />
+
+  <!-- Layer 2: Desk shelf -->
+  <image class="layer shelf" src="/Images/Shelf.png" mode="scaleToFill" />
+
+  <!-- Layer 3: Bulletin board (todo list) -->
+  <view class="layer todo-container" bindlongpress="onAddTodo">
+    <image class="todo-board" src="/Images/TodoList.png" mode="scaleToFill" />
+    <image class="todo-text-bg" src="/Images/TodoListText.png" mode="scaleToFill" />
+    <scroll-view class="todo-items" scroll-y>
+      <view
+        wx:for="{{todos}}"
+        wx:key="id"
+        class="todo-item {{item.done ? 'done' : ''}}"
+        bindtap="onToggleTodo"
+        data-id="{{item.id}}"
+      >{{item.text}}</view>
+    </scroll-view>
+  </view>
+
+  <!-- Layer 4: Clock / Timer -->
+  <view class="layer clock-container">
+    <image class="clock-base" src="/Images/ClockBase.png" mode="scaleToFill" />
+    <text class="clock-display">{{timerDisplay}}</text>
+  </view>
+
+  <!-- Layer 5: Slogan -->
+  <image class="layer slogan" src="/Images/Slogan.png" mode="scaleToFill" />
+  
+  <!-- Layer 6: Lamp -->
+  <image class="layer lamp" src="/Images/Lamp.png" mode="scaleToFill" />
+  
+  <!-- Layer 7: Mug base -->
+  <image class="layer mug-base {{mugBounce ? 'bounce' : ''}}" src="/Images/MugBase.png" mode="scaleToFill" bindtap="onMugTap" />
+
+  <!-- Layer 8: Mug expressions (only one visible at a time) -->
+  <image wx:if="{{mugMood === 'neutral'}}"    class="layer mug-expr" src="/Images/MugExpressionNeutral.png"    mode="scaleToFill" bindtap="onMugTap" />
+  <image wx:if="{{mugMood === 'happy'}}"      class="layer mug-expr" src="/Images/MugExpressionHappy.png"      mode="scaleToFill" bindtap="onMugTap" />
+  <image wx:if="{{mugMood === 'flustered'}}"  class="layer mug-expr" src="/Images/MugExpressionFlustered.png"  mode="scaleToFill" bindtap="onMugTap" />
+  <image wx:if="{{mugMood === 'angry'}}"      class="layer mug-expr" src="/Images/MugExpressionAngry.png"      mode="scaleToFill" bindtap="onMugTap" />
+
+  <!-- Layer 9: Speech bubble -->
+  <view wx:if="{{bubbleVisible}}" class="layer bubble-container">
+    <image class="bubble-img" src="/Images/SpeechBubble.png" mode="scaleToFill" />
+    <text class="bubble-text">{{bubbleText}}</text>
+  </view>
+
+  <!-- Functional input bar -->
+  <view class="layer input-row">
+    <input
+      class="text-input"
+      placeholder="Say something..."
+      value="{{inputText}}"
+      disabled="{{llmLoading}}"
+      bindinput="onInputChange"
+      bindconfirm="onInputSubmit"
+      confirm-type="send"
+    />
+    <view class="send-btn {{llmLoading ? 'loading' : ''}}" bindtap="onInputSubmit">
+      <text>{{llmLoading ? '...' : '→'}}</text>
+    </view>
+  </view>
+
+  <!-- Clock tap zone — rendered above all images so it captures taps -->
+  <view class="clock-tap-zone" bindtap="onToggleTimer"></view>
+
+  <!-- Score display -->
+  <view class="layer score-display">
+    <text class="score-text">Score: {{workScore}}</text>
+  </view>
+
+</view>

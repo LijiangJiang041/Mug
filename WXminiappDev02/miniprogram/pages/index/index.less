@@ -1,0 +1,248 @@
+/* index.less — Mug Companion Scene */
+
+page {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background: #f5ede0;
+}
+
+.scene {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Base layer utility */
+.layer {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/* Background — fills entire screen */
+.bg {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+}
+
+.shelf {
+    width: 100vw;
+    height: 100vh;
+}
+
+.lamp {
+    width: 100vw;
+    height: 100vh;
+}
+
+.todo-container {
+    width: 100vw;
+    height: 100vh;
+}
+
+.todo-board {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.todo-text-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.todo-items {
+    position: absolute;
+    top: 17%;
+    left: 9%;
+    width: 38%;
+    height: 40%;
+}
+
+.todo-item {
+    font-size: 20rpx;
+    color: #333;
+    line-height: 1.6;
+    padding: 2rpx 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &.done {
+        text-decoration: line-through;
+        color: #999;
+    }
+}
+
+.clock-container {
+    width: 100vw;
+    height: 100vh;
+}
+
+.clock-base {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.clock-display {
+    position: absolute;
+    left: 508rpx;
+    top: 380rpx;
+    text-align: center;
+    font-size: 32rpx;
+    font-weight: bold;
+    color: #333;
+    letter-spacing: 2rpx;
+}
+
+.clock-btn {
+    position: absolute;
+    left: 451rpx;
+    top: 384rpx;
+    width: 258rpx;
+    height: 96rpx;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.clock-tap-zone {
+    position: absolute;
+    left: 451rpx;
+    top: 384rpx;
+    width: 258rpx;
+    height: 96rpx;
+    background: transparent;
+}
+
+.mug-base {
+    width: 100vw;
+    height: 100vh;
+    transition: transform 0.15s ease;
+
+    &.bounce {
+        animation: mug-pop 0.35s ease;
+    }
+}
+
+.mug-expr {
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+}
+
+.bubble-container {
+    width: 100vw;
+    height: 100vh;
+}
+
+.bubble-img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.bubble-text {
+    position: absolute;
+    top: 24%;
+    left: 24%;
+    width: 54%;
+    font-size: 24rpx;
+    color: #333;
+    text-align: center;
+    line-height: 1.5;
+}
+
+.slogan {
+    width: 100vw;
+    height: 100vh;
+}
+
+
+/* Functional input row */
+.input-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    bottom: 2vh;
+    top: auto;
+    left: 4vw;
+    width: 92vw;
+    height: 72rpx;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 36rpx;
+    padding: 0 20rpx;
+    box-sizing: border-box;
+}
+
+.text-input {
+    flex: 1;
+    font-size: 26rpx;
+    color: #333;
+    height: 72rpx;
+    line-height: 72rpx;
+}
+
+.send-btn {
+    width: 60rpx;
+    height: 60rpx;
+    border-radius: 30rpx;
+    background: #d4855c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &.loading {
+        background: #ccc;
+    }
+
+    text {
+        color: #fff;
+        font-size: 28rpx;
+    }
+}
+
+/* Score display — top left */
+.score-display {
+    top: 2vh;
+    left: 4vw;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 20rpx;
+    padding: 6rpx 18rpx;
+}
+
+.score-text {
+    font-size: 22rpx;
+    color: #555;
+}
+
+/* Bounce animation */
+@keyframes mug-pop {
+    0% {
+        transform: scale(1);
+    }
+    40% {
+        transform: scale(1.08);
+    }
+    70% {
+        transform: scale(0.96);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
