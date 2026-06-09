@@ -1,4 +1,4 @@
-# Work Mug - Productivity Companion Mini Program
+# Mug Companion - Productivity Companion Mini Program
 A cute, interactive WeChat Mini Program that boosts focus with an emotional desk mug.
 
 ## Core Features
